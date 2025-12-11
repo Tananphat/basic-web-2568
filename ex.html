@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>แบบฟอร์มลงทะเบียนสุดเท่</title>
+
+  <style>
+    body {
+      font-family: "Prompt", Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      padding: 30px;
+    }
+    
+
+    .form-container {
+      width: 100%;
+      max-width: 650px;
+      padding: 35px;
+      background: rgba(10, 10, 20, 0.65);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      border: 1px solid rgba(150, 70, 255, 0.4);
+      box-shadow: 0 0 25px rgba(150, 70, 255, 0.3),
+                  0 0 60px rgba(80, 0, 255, 0.25) inset;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 35px;
+      color: #007bff;
+      font-size: 32px;
+      font-weight: 700;
+      text-shadow: 0 0 10px #a349ff, 0 0 20px #6f00ff;
+      letter-spacing: 2px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+      padding-bottom: 10px;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 15px;
+      color: #007bff;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border-radius: 10px;
+      border: 1px solid #c9c9c9;
+      font-size: 15px;
+      background: #fafafa;
+      transition: all 0.25s ease;
+      box-sizing: border-box;
+    }
+
+    input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+      outline: none;
+    }
+
+    input[type="color"] {
+      height: 45px;
+      cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+      width: auto;
+      transform: scale(1.2);
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    .range-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    input[type="range"] {
+      width: 85%;
+      cursor: pointer;
+    }
+
+    .range-value {
+      font-weight: 700;
+      font-size: 17px;
+      color: #007bff;
+      width: 15%;
+      text-align: right;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      background: linear-gradient(135deg, #007bff, #0056d6);
+      color: white;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      width: 50%;
+      padding: 14px 0;
+      border-radius: 12px;
+      transition: 0.25s;
+    }
+
+    input[type="submit"]:hover,
+    input[type="reset"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0px 6px 15px rgba(0, 123, 255, 0.35);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+    <h2>แบบฟอร์มลงทะเบียน</h2>
+
+    <form id="myForm">
+
+      <div class="form-group">
+        <label for="name">ชื่อ - นามสกุล</label>
+        <input type="text" id="name" placeholder="กรอกชื่อ-นามสกุลของคุณ" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">อีเมล</label>
+        <input type="email" id="email" placeholder="กรอกอีเมลของคุณ" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">รหัสผ่าน</label>
+        <input type="password" id="password" placeholder="กรอกรหัสผ่าน" required>
+      </div>
+
+      <div class="form-group">
+        <label for="tel">เบอร์โทรศัพท์</label>
+        <input type="tel" id="tel" placeholder="กรอกเบอร์โทรศัพท์" required>
+      </div>
+
+      <div class="form-group">
+        <label for="dob">วันเดือนปีเกิด</label>
+        <input type="date" id="dob" required>
+      </div>
+
+      <div class="form-group">
+        <label for="color">สีโปรดของคุณ</label>
+        <input type="color" id="color" value="#ff0000">
+      </div>
+
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="terms"> ฉันยอมรับเงื่อนไขการใช้งาน
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="file">อัปโหลดรูปโปรไฟล์</label>
+        <input type="file" id="file" accept="image/*">
+      </div>
+
+      <div class="form-group">
+        <label for="age">อายุ (ปรับเลื่อน)</label>
+        <div class="range-container">
+          <input type="range" id="age" min="18" max="100" value="25">
+          <span class="range-value" id="rangeValue">25</span>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <input type="submit" value="ยืนยันข้อมูล">
+        <input type="reset" value="ล้างข้อมูล">
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    const rangeInput = document.getElementById('age');
+    const rangeValue = document.getElementById('rangeValue');
+    rangeInput.addEventListener('input', function() {
+      rangeValue.textContent = rangeInput.value;
+    });
+
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const phone = document.getElementById('tel').value;
+      const dob = document.getElementById('dob').value;
+      const color = document.getElementById('color').value;
+      const terms = document.getElementById('terms').checked;
+      const file = document.getElementById('file').files[0];
+      const age = document.getElementById('age').value;
+
+      alert(`ส่งข้อมูลสำเร็จ!
+
+ชื่อ: ${name}
+อีเมล: ${email}
+รหัสผ่าน: ${password}
+เบอร์โทรศัพท์: ${phone}
+วันเกิด: ${dob}
+สีโปรด: ${color}
+อายุ: ${age}
+ยอมรับเงื่อนไข: ${terms ? 'ใช่' : 'ไม่ใช่'}
+รูปโปรไฟล์: ${file ? file.name : 'ไม่ได้อัปโหลด'}
+      `);
+    });
+  </script>
+
+</body>
+</html>
